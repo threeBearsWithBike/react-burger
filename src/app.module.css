@@ -1,0 +1,13 @@
+.app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    margin: 0 auto;
+    column-gap: 40px;
+    max-width: 1240px;
+    max-height: 100vh;
+}
+
+header {
+    grid-column: 1 / span 2;
+}

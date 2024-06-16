@@ -1,0 +1,33 @@
+.app_header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 88px;
+    align-items: center;
+}
+
+nav {
+    justify-self: start;
+}
+
+.logo {
+    justify-self: center;
+}
+
+.door {
+    justify-self: end;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.btn span {
+    padding-left: 8px;
+}
+
+nav .btn:first-child {
+    margin-right: 8px;
+}
