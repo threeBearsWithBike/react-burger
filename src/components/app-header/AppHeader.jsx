@@ -3,7 +3,7 @@ import { BurgerIcon, MenuIcon, Logo, ProfileIcon } from '@ya.praktikum/react-dev
 
 const AppHeader = () => {
     return (
-        <div className={style.app_header}>
+        <header className={style.app_header}>
             <nav>
                 <div>
                     <span className={style.btn}>
@@ -25,7 +25,7 @@ const AppHeader = () => {
                     <span className={'text text_type_main-default'}>Личный кабинет</span>
                 </span>
             </div>
-        </div>
+        </header>
     )
 }
 

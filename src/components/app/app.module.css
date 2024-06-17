@@ -8,6 +8,6 @@
     max-height: 100vh;
 }
 
-header {
+.header_wrapper {
     grid-column: 1 / span 2;
 }

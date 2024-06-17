@@ -16,7 +16,7 @@ const BurgerIngredients = () => {
             <p className={style.burger_ingredients_title}>
                 <span className='ttext text_type_main-large'>Соберите бургер</span>
             </p>
-            <div style={{ display: 'flex' }} className={style.tab}>
+            <div className={style.tab}>
                 <Tab value="one" active={current === 'one'} onClick={setCurrent}>
                     Булки
                 </Tab>
@@ -35,7 +35,7 @@ const BurgerIngredients = () => {
                         {
                             buns.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient.id}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>
@@ -67,7 +67,7 @@ const BurgerIngredients = () => {
                         {
                             sauces.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient.id}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>
@@ -99,7 +99,7 @@ const BurgerIngredients = () => {
                         {
                             primaryIngredients.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient.id}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>

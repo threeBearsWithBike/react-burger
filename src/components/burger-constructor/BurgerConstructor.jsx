@@ -21,7 +21,7 @@ const BurgerConstructor = () => {
                     {
                         autherIngredients.map(ingredient => {
                             return (
-                                <div className={style.auther_ingredients_item}>
+                                <div className={style.auther_ingredients_item} key={ingredient._id}>
                                     <DragIcon type="primary" />
                                     <ConstructorElement
                                     text={ingredient.name}
