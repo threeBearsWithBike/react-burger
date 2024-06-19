@@ -6,7 +6,7 @@ const BurgerConstructor = () => {
     const autherIngredients = data.filter(ingredient => ingredient.type !== 'bun');
 
     return (
-        <div className={style.burger_constructor}>
+        <article className={style.burger_constructor}>
             <div className={style.all_ingredients}>
                 <div className={style.bun}>
                     <ConstructorElement
@@ -50,7 +50,7 @@ const BurgerConstructor = () => {
                 </div>
                 <Button htmlType="submit" type="primary" size="large">Оформить</Button>
             </div>
-        </div>
+        </article>
     )
 }
 

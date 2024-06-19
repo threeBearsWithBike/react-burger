@@ -5,13 +5,13 @@ import BurgerConstructor from '../burger-constructor/BurgerConstructor';
 
 function App() {
   return (
-    <div className={style.app}>
+    <section className={style.app}>
       <div className={style.header_wrapper}>
         <AppHeader />
       </div>
       <BurgerIngredients />
       <BurgerConstructor />
-    </div>
+    </section>
   );
 }
 

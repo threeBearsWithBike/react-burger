@@ -12,10 +12,10 @@ const BurgerIngredients = () => {
     const sauces = data.filter(ingredient => ingredient.type === 'sauce');
 
     return (
-        <div className={style.burger_ingredients}>
-            <p className={style.burger_ingredients_title}>
+        <article className={style.burger_ingredients}>
+            <h1 className={style.burger_ingredients_title}>
                 <span className='ttext text_type_main-large'>Соберите бургер</span>
-            </p>
+            </h1>
             <div className={style.tab}>
                 <Tab value="one" active={current === 'one'} onClick={setCurrent}>
                     Булки
@@ -42,6 +42,7 @@ const BurgerIngredients = () => {
                                         <div className={style.burger_ingredients_price}>
                                             <span className='text text_type_digits-default'>
                                                 {ingredient.price}
+                                                &nbsp;
                                                 <CurrencyIcon type="primary" />
                                             </span>
                                         </div>
@@ -74,6 +75,7 @@ const BurgerIngredients = () => {
                                         <div className={style.burger_ingredients_price}>
                                             <span className='text text_type_digits-default'>
                                                 {ingredient.price}
+                                                &nbsp;
                                                 <CurrencyIcon type="primary" />
                                             </span>
                                         </div>
@@ -106,6 +108,7 @@ const BurgerIngredients = () => {
                                         <div className={style.burger_ingredients_price}>
                                             <span className='text text_type_digits-default'>
                                                 {ingredient.price}
+                                                &nbsp;
                                                 <CurrencyIcon type="primary" />
                                             </span>
                                         </div>
@@ -124,7 +127,7 @@ const BurgerIngredients = () => {
                         }
                 </div>
             </div>
-        </div>
+        </article>
     )
 }
 

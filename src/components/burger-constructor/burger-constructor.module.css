@@ -15,6 +15,20 @@
     row-gap: 16px;
 }
 
+@media screen and (min-height: 900px) {
+
+    .all_ingredients {
+        height: 500px;
+    }
+}
+
+@media screen and (min-height: 1200px) {
+
+    .all_ingredients {
+        height: 650px;
+    }
+}
+
 .bun {
     padding-left: 32px;
 }
