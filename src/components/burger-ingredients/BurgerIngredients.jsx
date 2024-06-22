@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import style from './burger-ingredients.module.css';
 import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-import { data } from '../../utils/data';
+import PropTypes from 'prop-types';
 
 
-const BurgerIngredients = () => {
+const BurgerIngredients = ({ingredientsList}) => {
     const [current, setCurrent] = useState('one');
 
-    const buns = data.filter(ingredient => ingredient.type === 'bun');
-    const primaryIngredients = data.filter(ingredient => ingredient.type === 'main');
-    const sauces = data.filter(ingredient => ingredient.type === 'sauce');
+    const buns = ingredientsList.filter(ingredient => ingredient.type === 'bun');
+    const primaryIngredients = ingredientsList.filter(ingredient => ingredient.type === 'main');
+    const sauces = ingredientsList.filter(ingredient => ingredient.type === 'sauce');
+
 
     return (
         <article className={style.burger_ingredients}>
@@ -129,6 +130,10 @@ const BurgerIngredients = () => {
             </div>
         </article>
     )
+}
+
+BurgerIngredients.propTypes = {
+    ingredientsList: PropTypes.array
 }
 
 export default BurgerIngredients;

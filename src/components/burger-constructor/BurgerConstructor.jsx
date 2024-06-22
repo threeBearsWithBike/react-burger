@@ -1,9 +1,9 @@
 import style from './burger-constructor.module.css';
 import { CurrencyIcon, DragIcon, ConstructorElement, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { data } from '../../utils/data';
+import PropTypes from 'prop-types';
 
-const BurgerConstructor = () => {
-    const autherIngredients = data.filter(ingredient => ingredient.type !== 'bun');
+const BurgerConstructor = ({ingredientsList}) => {
+    const autherIngredients = ingredientsList.filter(ingredient => ingredient.type !== 'bun');
 
     return (
         <article className={style.burger_constructor}>
@@ -14,7 +14,7 @@ const BurgerConstructor = () => {
                     isLocked={true}
                     text="Краторная булка N-200i (верх)"
                     price={200}
-                    thumbnail={data[0].image}
+                    thumbnail={ingredientsList[0].image}
                     />
                 </div>
                 <div className={style.auther_ingredients}>
@@ -39,7 +39,7 @@ const BurgerConstructor = () => {
                     isLocked={true}
                     text="Краторная булка N-200i (низ)"
                     price={200}
-                    thumbnail={data[0].image}
+                    thumbnail={ingredientsList[0].image}
                     />
                 </div>
             </div>
@@ -52,6 +52,10 @@ const BurgerConstructor = () => {
             </div>
         </article>
     )
+}
+
+BurgerConstructor.propTypes = {
+    ingredientsList: PropTypes.array
 }
 
 export default BurgerConstructor;
