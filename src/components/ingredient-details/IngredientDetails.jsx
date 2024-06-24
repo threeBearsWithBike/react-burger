@@ -1,7 +1,11 @@
 import style from './ingredient-details.module.css';
 
 const IngredientDetails = () => {
-    return <></>
+    return (
+        <article>
+            This is IngredientDetails
+        </article>
+    )
 }
 
 export default IngredientDetails;

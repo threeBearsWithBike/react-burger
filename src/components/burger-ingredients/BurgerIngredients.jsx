@@ -4,8 +4,12 @@ import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger
 import PropTypes from 'prop-types';
 
 
-const BurgerIngredients = ({ingredientsList}) => {
+const BurgerIngredients = ({ingredientsList, openModal, getTypeChildOfModal}) => {
     const [current, setCurrent] = useState('one');
+    const handlerIngredientItem = () => {
+        getTypeChildOfModal(false);
+        openModal();
+    }
 
     const buns = ingredientsList.filter(ingredient => ingredient.type === 'bun');
     const primaryIngredients = ingredientsList.filter(ingredient => ingredient.type === 'main');
@@ -36,7 +40,7 @@ const BurgerIngredients = ({ingredientsList}) => {
                         {
                             buns.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={handlerIngredientItem}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>
@@ -69,7 +73,7 @@ const BurgerIngredients = ({ingredientsList}) => {
                         {
                             sauces.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={handlerIngredientItem}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>
@@ -102,7 +106,7 @@ const BurgerIngredients = ({ingredientsList}) => {
                         {
                             primaryIngredients.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={handlerIngredientItem}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>

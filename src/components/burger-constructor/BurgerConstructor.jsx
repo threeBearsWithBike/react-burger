@@ -2,8 +2,12 @@ import style from './burger-constructor.module.css';
 import { CurrencyIcon, DragIcon, ConstructorElement, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 
-const BurgerConstructor = ({ingredientsList, openModal}) => {
+const BurgerConstructor = ({ingredientsList, openModal, getTypeChildOfModal}) => {
     const autherIngredients = ingredientsList.filter(ingredient => ingredient.type !== 'bun');
+    const handlerSubmit = () => {
+        getTypeChildOfModal(true);
+        openModal();
+    }
 
     return (
         <article className={style.burger_constructor}>
@@ -48,7 +52,7 @@ const BurgerConstructor = ({ingredientsList, openModal}) => {
                     <span className="text text_type_digits-medium">610 </span>
                     <CurrencyIcon type="primary" />
                 </div>
-                <Button htmlType="submit" type="primary" size="large" onClick={openModal}>Оформить</Button>
+                <Button htmlType="submit" type="primary" size="large" onClick={handlerSubmit}>Оформить</Button>
             </div>
         </article>
     )

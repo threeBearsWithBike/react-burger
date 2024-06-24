@@ -14,6 +14,7 @@ const DOMEN = 'norma.nomoreparties.space';
 function App() {
   const {success, data} = useFetch(`https://${DOMEN}/api/ingredients`);
   const [isOpenModal, setOpenModal] = useState(false);
+  const [isTypeChildOfModal, setTypeChildOfModal] = useState(null);
 
   const closeModal = () => {
     setOpenModal(false);
@@ -23,15 +24,19 @@ function App() {
     setOpenModal(true);
   }
 
+  const getTypeChildOfModal = (value) => {
+    value ? setTypeChildOfModal(true) : setTypeChildOfModal(false);
+  }
+
   return (
     <section className={style.app}>
       {isOpenModal && <ModalOverlay closeModal={closeModal} />}
-      {isOpenModal && <Modal closeModal={closeModal} />}
+      {isOpenModal && <Modal closeModal={closeModal} typeChild={isTypeChildOfModal} />}
       <div className={style.header_wrapper}>
         <AppHeader />
       </div>
-      { success && <BurgerIngredients ingredientsList={data} /> }
-      { success && <BurgerConstructor ingredientsList={data} openModal={openModal} /> }
+      { success && <BurgerIngredients ingredientsList={data} openModal={openModal} getTypeChildOfModal={getTypeChildOfModal} /> }
+      { success && <BurgerConstructor ingredientsList={data} openModal={openModal} getTypeChildOfModal={getTypeChildOfModal} /> }
     </section>
   );
 }
