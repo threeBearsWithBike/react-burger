@@ -2,7 +2,7 @@ import style from './burger-constructor.module.css';
 import { CurrencyIcon, DragIcon, ConstructorElement, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 
-const BurgerConstructor = ({ingredientsList}) => {
+const BurgerConstructor = ({ingredientsList, openModal}) => {
     const autherIngredients = ingredientsList.filter(ingredient => ingredient.type !== 'bun');
 
     return (
@@ -48,7 +48,7 @@ const BurgerConstructor = ({ingredientsList}) => {
                     <span className="text text_type_digits-medium">610 </span>
                     <CurrencyIcon type="primary" />
                 </div>
-                <Button htmlType="submit" type="primary" size="large">Оформить</Button>
+                <Button htmlType="submit" type="primary" size="large" onClick={openModal}>Оформить</Button>
             </div>
         </article>
     )
