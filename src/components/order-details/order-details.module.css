@@ -1,0 +1,27 @@
+.order_details {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    text-align: center;
+}
+
+.contents_wrapper {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.number_order {
+    margin-bottom: 32px;
+}
+
+.icon {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.status_order {
+    margin-bottom: 8px;
+}
+
+.wait {
+    color: #8585AD;
+}

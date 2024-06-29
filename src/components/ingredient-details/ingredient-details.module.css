@@ -1,0 +1,39 @@
+.ingredient_details {
+    padding: 40px 40px 60px 40px;
+}
+
+.contents_wrapper {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.inredient_image {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.inredient_image img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.ingredients {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    column-gap: 20px;
+    color: #8585AD;
+}
+
+.ingredients p,
+.name_ingredient {
+    text-align: center;
+}
+
+.name_ingredient {
+    margin-bottom: 32px;
+}
+
+h3 {
+    text-align: center;
+}

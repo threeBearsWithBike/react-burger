@@ -3,10 +3,23 @@ import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-component
 
 const OrderDetails = () => {
     return (
-        <div>
-            <p className="text text_type_digits-large">034536</p>
-            <CheckMarkIcon type="primary" />
-        </div>
+        <article className={style.order_details}>
+            <div className={style.contents_wrapper}>
+                <p className={style.number_order}>
+                    <span className="text text_type_digits-large">034536</span>
+                </p>
+                <h2>Идентификатор заказа</h2>
+                <span className={style.icon}>
+                    <CheckMarkIcon type="primary" />
+                </span>
+                <p className={style.status_order}>
+                    Ваш заказ уже начали готовить
+                </p>
+                <p className={style.wait}>
+                    Дождитесь готовности на орбитальной станции
+                </p>
+            </div>
+        </article>
     )
 }
 

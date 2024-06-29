@@ -2,10 +2,10 @@ import style from './burger-constructor.module.css';
 import { CurrencyIcon, DragIcon, ConstructorElement, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 
-const BurgerConstructor = ({ingredientsList, openModal, getTypeChildOfModal}) => {
+const BurgerConstructor = ({ingredientsList, openModal, getModalContent}) => {
     const autherIngredients = ingredientsList.filter(ingredient => ingredient.type !== 'bun');
     const handlerSubmit = () => {
-        getTypeChildOfModal(true);
+        getModalContent(true);
         openModal();
     }
 
@@ -59,7 +59,9 @@ const BurgerConstructor = ({ingredientsList, openModal, getTypeChildOfModal}) =>
 }
 
 BurgerConstructor.propTypes = {
-    ingredientsList: PropTypes.array
+    ingredientsList: PropTypes.arrayOf(PropTypes.object),
+    openModal: PropTypes.func,
+    getModalContent: PropTypes.func
 }
 
 export default BurgerConstructor;

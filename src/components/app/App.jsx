@@ -3,9 +3,11 @@ import AppHeader from '../app-header/AppHeader';
 import BurgerIngredients from '../burger-ingredients/BurgerIngredients';
 import BurgerConstructor from '../burger-constructor/BurgerConstructor';
 import { useState } from 'react';
-import { useFetch } from '../../castoms-hooks/useFetch';
-import ModalOverlay from '../modal-overlay/ModalOverlay';
+import { useFetch } from '../../custom-hooks/useFetch';
+import { useModal } from '../../custom-hooks/useModal';
 import Modal from '../modal/Modal';
+import IngredientDetails from '../ingredient-details/IngredientDetails';
+import OrderDetails from '../order-details/OrderDetails';
 
 
 
@@ -13,30 +15,50 @@ const DOMEN = 'norma.nomoreparties.space';
 
 function App() {
   const {success, data} = useFetch(`https://${DOMEN}/api/ingredients`);
-  const [isOpenModal, setOpenModal] = useState(false);
-  const [isTypeChildOfModal, setTypeChildOfModal] = useState(null);
+  const {isOpenModal, openModal, closeModal} = useModal();
+  const [isModalContent, setIsModalContent] = useState(null);
+  const [isIngredients, setIngredients] = useState();
 
-  const closeModal = () => {
-    setOpenModal(false);
+  const getModalContent = (value) => {
+    if (value) {
+      setIsModalContent(true);
+    } else {
+      setIsModalContent(false);
+    }
   }
 
-  const openModal = () => {
-    setOpenModal(true);
-  }
-
-  const getTypeChildOfModal = (value) => {
-    value ? setTypeChildOfModal(true) : setTypeChildOfModal(false);
+  const ingredientsProvider = (details) => {
+    setIngredients(details);
   }
 
   return (
     <section className={style.app}>
-      {isOpenModal && <ModalOverlay closeModal={closeModal} />}
-      {isOpenModal && <Modal closeModal={closeModal} typeChild={isTypeChildOfModal} />}
+
+      {
+        isOpenModal &&
+        <>
+          <Modal closeModal={closeModal}>
+            {isModalContent ? <OrderDetails /> : <IngredientDetails ingredients={isIngredients} />}
+          </Modal>
+        </>
+      }
+
       <div className={style.header_wrapper}>
         <AppHeader />
       </div>
-      { success && <BurgerIngredients ingredientsList={data} openModal={openModal} getTypeChildOfModal={getTypeChildOfModal} /> }
-      { success && <BurgerConstructor ingredientsList={data} openModal={openModal} getTypeChildOfModal={getTypeChildOfModal} /> }
+      { success && <BurgerIngredients
+                      ingredientsList={data}
+                      openModal={openModal}
+                      getModalContent={getModalContent}
+                      ingredientsProvider={ingredientsProvider}
+                    />
+      }
+      { success && <BurgerConstructor
+                      ingredientsList={data}
+                      openModal={openModal}
+                      getModalContent={getModalContent}
+                    />
+      }
     </section>
   );
 }

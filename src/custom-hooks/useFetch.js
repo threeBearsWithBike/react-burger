@@ -4,9 +4,9 @@ export const useFetch = (url) => {
     const [result, setResult] = useState({});
     useEffect(() => {
       fetch(url)
-      .then(response => response.json())
+      .then(response => response.ok ? response.json() : Promise.reject(`Error ${response.status}`))
       .then(response => setResult(response))
-      .catch(err => console.log(err));
+      .catch(console.error);
   
     }, [url]);
 

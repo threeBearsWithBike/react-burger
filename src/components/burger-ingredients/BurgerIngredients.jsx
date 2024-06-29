@@ -4,10 +4,11 @@ import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger
 import PropTypes from 'prop-types';
 
 
-const BurgerIngredients = ({ingredientsList, openModal, getTypeChildOfModal}) => {
+const BurgerIngredients = ({ingredientsList, openModal, getModalContent, ingredientsProvider}) => {
     const [current, setCurrent] = useState('one');
-    const handlerIngredientItem = () => {
-        getTypeChildOfModal(false);
+    const handlerIngredientItem = (details) => {
+        ingredientsProvider(details);
+        getModalContent(false);
         openModal();
     }
 
@@ -40,7 +41,7 @@ const BurgerIngredients = ({ingredientsList, openModal, getTypeChildOfModal}) =>
                         {
                             buns.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={handlerIngredientItem}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={() => handlerIngredientItem(ingredient)}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>
@@ -73,7 +74,7 @@ const BurgerIngredients = ({ingredientsList, openModal, getTypeChildOfModal}) =>
                         {
                             sauces.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={handlerIngredientItem}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={() => handlerIngredientItem(ingredient)}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>
@@ -106,7 +107,7 @@ const BurgerIngredients = ({ingredientsList, openModal, getTypeChildOfModal}) =>
                         {
                             primaryIngredients.map(ingredient => {
                                 return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={handlerIngredientItem}>
+                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={() => handlerIngredientItem(ingredient)}>
                                         <div className={style.burger_ingredients_picture}>
                                             <img src={ingredient.image} alt="#"/>
                                         </div>
@@ -136,8 +137,12 @@ const BurgerIngredients = ({ingredientsList, openModal, getTypeChildOfModal}) =>
     )
 }
 
-BurgerIngredients.propTypes = {
-    ingredientsList: PropTypes.array
-}
-
 export default BurgerIngredients;
+
+
+BurgerIngredients.propTypes = {
+    ingredientsList: PropTypes.arrayOf(PropTypes.object),
+    openModal: PropTypes.func,
+    getModalContent: PropTypes.func,
+    ingredientsProvider: PropTypes.func
+}
