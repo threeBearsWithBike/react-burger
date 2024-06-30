@@ -36,11 +36,9 @@ function App() {
 
       {
         isOpenModal &&
-        <>
           <Modal closeModal={closeModal}>
             {isModalContent ? <OrderDetails /> : <IngredientDetails ingredients={isIngredients} />}
-          </Modal>
-        </>
+          </Modal>        
       }
 
       <div className={style.header_wrapper}>
