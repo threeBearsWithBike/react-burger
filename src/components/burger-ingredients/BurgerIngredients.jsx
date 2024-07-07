@@ -2,19 +2,18 @@ import { useState } from 'react';
 import style from './burger-ingredients.module.css';
 import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import Ingredient from '../ingredient/Ingredient';
 
 
-const BurgerIngredients = ({ingredientsList, openModal, getModalContent, ingredientsProvider}) => {
+const BurgerIngredients = () => {
     const [current, setCurrent] = useState('one');
-    const handlerIngredientItem = (details) => {
-        ingredientsProvider(details);
-        getModalContent(false);
-        openModal();
-    }
 
-    const buns = ingredientsList.filter(ingredient => ingredient.type === 'bun');
-    const primaryIngredients = ingredientsList.filter(ingredient => ingredient.type === 'main');
-    const sauces = ingredientsList.filter(ingredient => ingredient.type === 'sauce');
+    const data = useSelector((state) => state.ingredientsConstructor.ingredients);
+
+    const buns = data.filter(ingredient => ingredient.type === 'bun');
+    const primaryIngredients = data.filter(ingredient => ingredient.type === 'main');
+    const sauces = data.filter(ingredient => ingredient.type === 'sauce');
 
 
     return (
@@ -39,97 +38,32 @@ const BurgerIngredients = ({ingredientsList, openModal, getModalContent, ingredi
                 </div>
                 <div className={style.ingredients_part}>
                         {
-                            buns.map(ingredient => {
-                                return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={() => handlerIngredientItem(ingredient)}>
-                                        <div className={style.burger_ingredients_picture}>
-                                            <img src={ingredient.image} alt="#"/>
-                                        </div>
-                                        <div className={style.burger_ingredients_price}>
-                                            <span className='text text_type_digits-default'>
-                                                {ingredient.price}
-                                                &nbsp;
-                                                <CurrencyIcon type="primary" />
-                                            </span>
-                                        </div>
-                                        <div className={style.burger_ingredients_name}>
-                                            <span className='text text_type_main-default'>{ingredient.name}</span>
-                                        </div>
-                                        {
-                                            (ingredient._id === '60666c42cc7b410027a1a9b1' ||
-                                                ingredient._id === '60666c42cc7b410027a1a9b5' ||
-                                                ingredient._id === '60666c42cc7b410027a1a9b7') && 
-                                            <Counter count={1} size="default" extraClass="m-1" />
-                                        }
-                                </div>
-                                )
-                            })
+                            buns.map(ingredient => <Ingredient
+                                                        key={ingredient._id}
+                                                        ingredient={ingredient}
+                                                    />)
                         }
                 </div>
-
                 <div className={style.ingredients_title}>
                     <span className='text text_type_main-medium'>Соусы</span>
                 </div>
                 <div className={style.ingredients_part}>
                         {
-                            sauces.map(ingredient => {
-                                return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={() => handlerIngredientItem(ingredient)}>
-                                        <div className={style.burger_ingredients_picture}>
-                                            <img src={ingredient.image} alt="#"/>
-                                        </div>
-                                        <div className={style.burger_ingredients_price}>
-                                            <span className='text text_type_digits-default'>
-                                                {ingredient.price}
-                                                &nbsp;
-                                                <CurrencyIcon type="primary" />
-                                            </span>
-                                        </div>
-                                        <div className={style.burger_ingredients_name}>
-                                            <span className='text text_type_main-default'>{ingredient.name}</span>
-                                        </div>
-                                        {
-                                            (ingredient._id === '60666c42cc7b410027a1a9b1' ||
-                                                ingredient._id === '60666c42cc7b410027a1a9b5' ||
-                                                ingredient._id === '60666c42cc7b410027a1a9b7') && 
-                                            <Counter count={1} size="default" extraClass="m-1" />
-                                        }
-                                    </div>
-                                )
-                            })
+                            sauces.map(ingredient => <Ingredient 
+                                                        key={ingredient._id}
+                                                        ingredient={ingredient}
+                                                    />)
                         }
                 </div>
-
                 <div className={style.ingredients_title}>
                     <span className='text text_type_main-medium'>Начинка</span>
                 </div>
                 <div className={style.ingredients_part}>
                         {
-                            primaryIngredients.map(ingredient => {
-                                return (
-                                    <div className={style.burger_ingredients_item} key={ingredient._id} onClick={() => handlerIngredientItem(ingredient)}>
-                                        <div className={style.burger_ingredients_picture}>
-                                            <img src={ingredient.image} alt="#"/>
-                                        </div>
-                                        <div className={style.burger_ingredients_price}>
-                                            <span className='text text_type_digits-default'>
-                                                {ingredient.price}
-                                                &nbsp;
-                                                <CurrencyIcon type="primary" />
-                                            </span>
-                                        </div>
-                                        <div className={style.burger_ingredients_name}>
-                                            <span className='text text_type_main-default'>{ingredient.name}</span>
-                                        </div>
-                                        {
-                                            (ingredient._id === '60666c42cc7b410027a1a9b1' ||
-                                                ingredient._id === '60666c42cc7b410027a1a9b5' ||
-                                                ingredient._id === '60666c42cc7b410027a1a9b7') && 
-                                            <Counter count={1} size="default" extraClass="m-1" />
-                                        }
-                                    </div>
-                                )
-                            })
+                            primaryIngredients.map(ingredient => <Ingredient
+                                                                    key={ingredient._id}
+                                                                    ingredient={ingredient}
+                                                                />)
                         }
                 </div>
             </div>

@@ -3,10 +3,18 @@ import { createPortal } from 'react-dom';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useEffect } from 'react';
 import ModalOverlay from '../modal-overlay/ModalOverlay';
+
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { CLOSE_MODAL } from '../../services/modal/actions';
 
 
-const Modal = ({children, closeModal}) => {
+const Modal = ({children}) => {
+
+    const dispatch = useDispatch();
+    const closeModal = () => {
+        dispatch({type: CLOSE_MODAL, payload: null});
+    }
     useEffect(() => {
         const handlerEscape = (event) => {
             if (event.key === 'Escape') {
@@ -17,7 +25,7 @@ const Modal = ({children, closeModal}) => {
         }
         document.addEventListener('keydown', handlerEscape);
         return () => document.removeEventListener('keydown', handlerEscape);
-    }, [closeModal])
+    }, [])
 
     return createPortal(
         <>
@@ -35,6 +43,6 @@ const Modal = ({children, closeModal}) => {
 export default Modal;
 
 Modal.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.array,
     closeModal: PropTypes.func
 }

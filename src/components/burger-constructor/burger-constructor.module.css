@@ -15,6 +15,16 @@
     row-gap: 16px;
 }
 
+.all_ingredients__void {
+    padding-bottom: 40px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: cornflowerblue;
+}
+
 @media screen and (min-height: 900px) {
 
     .all_ingredients {
@@ -35,6 +45,7 @@
 
 .auther_ingredients {
     overflow-y: auto;
+    min-height: 100px;
 }
 
 .auther_ingredients_item {

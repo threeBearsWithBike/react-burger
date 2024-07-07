@@ -1,0 +1,29 @@
+.burger_ingredients_item {
+    position: relative;
+    height: auto;
+    cursor: pointer;
+}
+
+.burger_ingredients_picture {
+    padding: 0 16px;
+    text-align: center;
+}
+
+.burger_ingredients_picture img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.burger_ingredients_price {
+    text-align: center;
+    padding: 4px 0;
+}
+
+.burger_ingredients_price span{
+    display: inline-flex;
+    align-items: center;
+}
+
+.burger_ingredients_name {
+    text-align: center;
+}
