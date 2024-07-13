@@ -5,13 +5,9 @@ export const GET_ORDER_FAILURE = 'GET_ORDER_FAILURE';
 export const SET_INGREDIENTS_ID = 'SET_INGREDIENTS_ID';
 
 export const getOrder = () => (dispatch, state) => {
-    try {
+    
         fetchOrder(state.order.ingredientsId)
         .then(response => dispatch({type: GET_ORDER_SUCCES, payload: response}))
         .catch(error => dispatch({type: GET_ORDER_FAILURE, payload: error.message}));
-    } catch(error) {
-        console.log(error);
-    }
-
 }
 

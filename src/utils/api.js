@@ -1,27 +1,22 @@
+import { checkResponse } from "./checkResponse";
+
+export const BASE_URL = 'https://norma.nomoreparties.space/api/';
+
 export const fetchIngredients = () => {
-    return fetch(`https://norma.nomoreparties.space/api/ingredients`)
-            .then(response => response.ok ? response.json() : Promise.reject(`Error ${response.status}`))
+    return fetch(`${BASE_URL}ingredients`)
+            .then(response => checkResponse(response))
             .then(response => response.data)
 }
 
 export const fetchOrder = (value) => {
-    try {
-        if (value.ingredients.length === 0) {
-            throw Error('no ingredients');
-        }
-        return fetch(`https://norma.nomoreparties.space/api/orders`, {
+        return fetch(`${BASE_URL}orders`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(value)
         })
-            .then(response => response.ok ? response.json() : Promise.reject(`Error ${response.status}`))
+            .then(response => checkResponse(response))
             .then(response => response.order.number)
-    } catch(error) {
-        console.log(error);
-    }
-
-
-
+            .catch(error => console.error(error))
 }

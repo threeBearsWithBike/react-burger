@@ -9,7 +9,7 @@ const OrderDetails = () => {
             <div className={style.contents_wrapper}>
                 <p className={style.number_order}>
                     <span className="text text_type_digits-large">
-                        {orderNumber ? orderNumber : '####'}
+                        {orderNumber}
                     </span>
                 </p>
                 <h2>Идентификатор заказа</h2>
@@ -17,10 +17,10 @@ const OrderDetails = () => {
                     <CheckMarkIcon type="primary" />
                 </span>
                 <p className={style.status_order}>
-                    {orderNumber ? 'Ваш заказ уже начали готовить' : 'Ожидание оформления заказа'}
+                    Ваш заказ уже начали готовить
                 </p>
                 <p className={style.wait}>
-                    {orderNumber ? 'Дождитесь готовности на орбитальной станции' : 'Необходимо выбрать продукты'}
+                    Дождитесь готовности на орбитальной станции
                 </p>
             </div>
         </article>

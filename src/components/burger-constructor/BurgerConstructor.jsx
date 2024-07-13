@@ -1,13 +1,14 @@
 import style from './burger-constructor.module.css';
-import { CurrencyIcon, DragIcon, ConstructorElement, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { CurrencyIcon, ConstructorElement, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { ADD_INGREDIENT, DELETE_INGREDIENT } from '../../services/constructor/actions';
+import { ADD_INGREDIENT } from '../../services/constructor/actions';
 import { OPEN_MODAL } from '../../services/modal/actions';
 import { SET_INGREDIENTS_ID } from '../../services/order/action';
 import { useDrop } from 'react-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useMemo } from 'react';
 import { getOrder } from '../../services/order/action';
+import { Card } from '../card/Card';
 
 const BurgerConstructor = () => {
     const dispatch = useDispatch();
@@ -28,11 +29,12 @@ const BurgerConstructor = () => {
     const [, dropTarget] = useDrop({
         accept: 'ingredient',
         drop: (ingredient) => {
-            dispatch({type: ADD_INGREDIENT, payload: {...ingredient, key: uuidv4()}});
+            dispatch({type: ADD_INGREDIENT, payload: {...ingredient, id: uuidv4()}});
         }
     })
     
     const handlerSubmit = () => {
+        if (constructorIngredients.primary.length === 0 || !constructorIngredients.buns) return;
         dispatch(getOrder());
         dispatch({type: OPEN_MODAL, payload: 'order-details'});
     }
@@ -57,17 +59,16 @@ const BurgerConstructor = () => {
                 </div>
                 <div className={style.auther_ingredients}>
                     {
-                        constructorIngredients.primary.length !== 0 ? constructorIngredients.primary.map(ingredient => {
+                        constructorIngredients.primary.length !== 0 ? constructorIngredients.primary.map((ingredient, index) => {
                             return (
-                                <div className={style.auther_ingredients_item} key={ingredient.key}>
-                                <DragIcon type="primary" />
-                                <ConstructorElement
-                                text={ingredient.name}
-                                price={ingredient.price}
-                                thumbnail={ingredient.image}
-                                handleClose={() => dispatch({type: DELETE_INGREDIENT, payload: ingredient.key})}
-                                />
-                                </div>
+                                    <Card
+                                        id={ingredient.id}
+                                        key={ingredient.id}
+                                        index={index}
+                                        name={ingredient.name}
+                                        price={ingredient.price}
+                                        image={ingredient.image}
+                                    />
                             )
                         }) :
                         <span className="text text_type_main-large">

@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT, DELETE_INGREDIENT, GET_INGREDIENTS_FAILURE, GET_INGREDIENTS_REQUIEST, GET_INGREDIENTS_SUCCES } from "./actions";
+import { ADD_INGREDIENT, GET_MOVE, DELETE_INGREDIENT, GET_INGREDIENTS_FAILURE, GET_INGREDIENTS_REQUIEST, GET_INGREDIENTS_SUCCES } from "./actions";
 
 const constructorState = {
     ingredients: [],
@@ -36,9 +36,16 @@ const constructorReducer = (state = constructorState, action) => {
 
         case(DELETE_INGREDIENT): {
             let newPrimary = state.constructorIngredients.primary
-                            .filter((ingredient) => ingredient.key !== action.payload);
+                            .filter((ingredient) => ingredient.id !== action.payload);
             return {...state, constructorIngredients: {...state.constructorIngredients, primary: newPrimary}}
         }
+
+            case(GET_MOVE): {
+                const newPrimary = [...state.constructorIngredients.primary];
+                const {dragIndex, hoverIndex} = action.payload;
+                [newPrimary[dragIndex], newPrimary[hoverIndex]] = [newPrimary[hoverIndex], newPrimary[dragIndex]];
+                return {...state, constructorIngredients: {...state.constructorIngredients, primary: newPrimary}}
+            }
 
         default:
             return state;
