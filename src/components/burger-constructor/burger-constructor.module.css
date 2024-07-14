@@ -22,7 +22,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    color: cornflowerblue;
+    color: #6495ed;
 }
 
 @media screen and (min-height: 900px) {

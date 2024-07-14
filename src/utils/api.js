@@ -18,5 +18,4 @@ export const fetchOrder = (value) => {
         })
             .then(response => checkResponse(response))
             .then(response => response.order.number)
-            .catch(error => console.error(error))
 }

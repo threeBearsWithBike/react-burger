@@ -48,12 +48,12 @@ const BurgerConstructor = () => {
                     <ConstructorElement
                     type="top"
                     isLocked={true}
-                    text={constructorIngredients.buns.name}
+                    text={constructorIngredients.buns.name + ' (верх)'}
                     price={constructorIngredients.buns.price}
                     thumbnail={constructorIngredients.buns.image}
                     /> :
                     <span className="text text_type_main-large">
-                    buns
+                    top bun
                     </span>
                     }
                 </div>
@@ -82,12 +82,12 @@ const BurgerConstructor = () => {
                     <ConstructorElement
                     type="bottom"
                     isLocked={true}
-                    text={constructorIngredients.buns.name}
+                    text={constructorIngredients.buns.name + ' (низ)'}
                     price={constructorIngredients.buns.price}
                     thumbnail={constructorIngredients.buns.image}
                     /> :
                     <span className="text text_type_main-large">
-                    buns
+                    bottom bun
                     </span>
                     }
                 </div>  

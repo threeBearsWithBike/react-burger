@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import style from './burger-ingredients.module.css';
-import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-import PropTypes from 'prop-types';
+import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector } from 'react-redux';
 import Ingredient from '../ingredient/Ingredient';
 
@@ -105,11 +104,3 @@ const BurgerIngredients = () => {
 }
 
 export default BurgerIngredients;
-
-
-BurgerIngredients.propTypes = {
-    ingredientsList: PropTypes.arrayOf(PropTypes.object),
-    openModal: PropTypes.func,
-    getModalContent: PropTypes.func,
-    ingredientsProvider: PropTypes.func
-}

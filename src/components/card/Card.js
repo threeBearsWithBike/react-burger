@@ -4,6 +4,7 @@ import { useDrag, useDrop } from 'react-dnd'
 import { DragIcon, ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch } from 'react-redux';
 import { DELETE_INGREDIENT, GET_MOVE } from '../../services/constructor/actions';
+import PropTypes from 'prop-types';
 
 
 export const Card = ({ id, index, name, price, image }) => {
@@ -63,4 +64,12 @@ export const Card = ({ id, index, name, price, image }) => {
             />
         </div>
     )
+}
+
+Card.propTypes = {
+    id: PropTypes.string,
+    index: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    image: PropTypes.string
 }

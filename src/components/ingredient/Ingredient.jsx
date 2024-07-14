@@ -5,7 +5,7 @@ import { OPEN_MODAL } from '../../services/modal/actions';
 import { SET_CURRENT_INGREDIENT } from '../../services/modal/actions';
 import { useDrag } from 'react-dnd';
 import { useMemo } from 'react';
-
+import PropTypes from 'prop-types';
 
 const Ingredient = ({ingredient}) => {
     const dispatch = useDispatch();
@@ -70,3 +70,20 @@ const Ingredient = ({ingredient}) => {
 }
 
 export default Ingredient;
+
+Ingredient.propTypes = {
+    ingredient: PropTypes.shape({
+        _id: PropTypes.string,
+        name: PropTypes.string,
+        type: PropTypes.string,
+        proteins: PropTypes.number,
+        fat: PropTypes.number,
+        carbohydrates: PropTypes.number,
+        calories: PropTypes.number,
+        price: PropTypes.number,
+        image: PropTypes.string,
+        image_mobile: PropTypes.string,
+        image_large: PropTypes.string,
+        __v: PropTypes.number
+    })
+}

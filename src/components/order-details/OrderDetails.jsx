@@ -1,15 +1,23 @@
 import style from './order-details.module.css';
 import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector } from 'react-redux';
+import { PulseLoader } from 'react-spinners';
 
 const OrderDetails = () => {
     const orderNumber = useSelector(state => state.order.orderNumber);
+    
     return (
         <article className={style.order_details}>
             <div className={style.contents_wrapper}>
                 <p className={style.number_order}>
                     <span className="text text_type_digits-large">
-                        {orderNumber}
+                        {orderNumber ? orderNumber : <PulseLoader
+                                                        color="blue"
+                                                        loading
+                                                        margin={10}
+                                                        size={30}
+                                                    />
+                        }
                     </span>
                 </p>
                 <h2>Идентификатор заказа</h2>

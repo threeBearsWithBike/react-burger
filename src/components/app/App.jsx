@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getIngredients } from '../../services/constructor/actions';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { getOrder } from '../../services/order/action';
+
 
 function App() {
   const isOpenModal = useSelector(state => state.modal.isOpen);

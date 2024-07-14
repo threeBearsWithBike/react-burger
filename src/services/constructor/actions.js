@@ -5,6 +5,7 @@ export const GET_INGREDIENTS_REQUIEST = 'GET_INGREDIENTS_REQUIEST';
 export const GET_INGREDIENTS_SUCCES = 'GET_INGREDIENTS_SUCCES';
 export const GET_INGREDIENTS_FAILURE = 'GET_INGREDIENTS_FAILURE';
 export const GET_MOVE = 'GET_MOVE';
+export const GET_CONSTRUCTOR_CLEANUP = 'GET_CONSTRUCTOR_CLEANUP';
 
 export const getIngredients = () => (dispatch) => {
     dispatch({type: GET_INGREDIENTS_REQUIEST});

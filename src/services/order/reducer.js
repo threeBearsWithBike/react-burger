@@ -1,4 +1,4 @@
-import {GET_ORDER_REQUIEST, GET_ORDER_SUCCES, GET_ORDER_FAILURE, SET_INGREDIENTS_ID} from './action';
+import {GET_ORDER_REQUIEST, GET_ORDER_SUCCES, GET_ORDER_FAILURE, SET_INGREDIENTS_ID, GET_ORDER_CLEANUP} from './action';
 
 const orderState = {
     ingredientsId: {
@@ -30,6 +30,9 @@ const orderReduce = (state = orderState, action) => {
         }
         case(GET_ORDER_FAILURE): {
             return {...state, isLoading: false, error: action.payload, orderNumber: []};
+        }
+        case(GET_ORDER_CLEANUP): {
+            return {...orderState}
         }
         default:
             return state;
