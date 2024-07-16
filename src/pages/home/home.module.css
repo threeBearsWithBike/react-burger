@@ -1,0 +1,13 @@
+.home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    margin: 0 auto;
+    column-gap: 40px;
+    max-width: 1240px;
+    height: 95vh;
+}
+
+.header_wrapper {
+    grid-column: 1 / span 2;
+}

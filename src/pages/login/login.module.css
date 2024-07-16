@@ -1,0 +1,38 @@
+.header {
+    margin-bottom: 100px;
+}
+
+.form_wrapper {
+    display: block;
+    width: 480px;
+    margin: 0 auto;
+}
+
+.title_form {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.input_wrapper {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.button_wrapper {
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+.footer_row {
+    text-align: center;
+}
+.question {
+    margin-right: 8px;
+    color: #8585AD;
+    cursor: pointer;
+}
+
+.do_it {
+    color: #4C4CFF;
+    cursor: pointer;
+}
